@@ -1,0 +1,11 @@
+Liverpool:
+  manager: "Arne Slot"
+  playlists:
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLR8DItC4f5xsPz67MMsxjQNEekHvgphya"
+# Add more teams as needed
+Newcastle:
+  manager: "Eddie Howe"
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLb39HY4ZwBVkfiBPrstBc9ccg4x79iOyd"
