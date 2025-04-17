@@ -1,3 +1,9 @@
+
+Everton:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLkB7IpRClaTIcUiMWJcKa3qjpSnOV0cis"
+      
 Liverpool:
   playlists:
     - label: "Press Conferences"
@@ -57,8 +63,3 @@ Southampton:
   playlists: 
     - label: "Press Conferences"
       url: "https://www.youtube.com/playlist?list=PLM7o8Rfl9FTnU2Th0IlLZnKHvUKPMV6lT"
-
-Everton:
-  playlists: 
-    - label: "Press Conferences"
-      url: "https://www.youtube.com/playlist?list=PLkB7IpRClaTIcUiMWJcKa3qjpSnOV0cis"
