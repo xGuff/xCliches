@@ -1,11 +1,64 @@
 Liverpool:
-  manager: "Arne Slot"
   playlists:
     - label: "Press Conferences"
       url: "https://www.youtube.com/playlist?list=PLR8DItC4f5xsPz67MMsxjQNEekHvgphya"
-# Add more teams as needed
+
 Newcastle:
-  manager: "Eddie Howe"
   playlists: 
     - label: "Press Conferences"
       url: "https://www.youtube.com/playlist?list=PLb39HY4ZwBVkfiBPrstBc9ccg4x79iOyd"
+
+Chelsea:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLx6bGx4zt6EnttH_iwEFB3SJ0xdp8p3NV"
+
+West Ham:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PL6AaXUmbEmKjGbbs9h3hGHXURwm1qExxS"
+
+Manchester City:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLp_A7BZlpSOeaPDYrZlrzKQhRyvHhDkqK"
+
+Bournemouth:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLDSAlkBZMWj5EpkMUX9LWtO-Nv1ioy-1o"
+
+Fulham :
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLY8T1xH7hxooV_7h2d4FXmNrURfGDLHfp"
+
+Brighton:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLU4NF13Grb9GGUVBwdThqpiXJNyxdwsgx"
+
+Crystal Palace:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PL18wCAmgRhL--5ovVqK3smztAx4GZvh1k"
+
+Manchester United:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/watch?v=Bk7tDjxsrB0&list=PL5-QUghxmluJZsSNEVjck9EEKmvrQvmXz"
+
+Leicester City:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLiuVCXyn6-refPmnSfZQ8miC4FgtEknis"
+
+Southampton:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLM7o8Rfl9FTnU2Th0IlLZnKHvUKPMV6lT"
+
+Everton:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLkB7IpRClaTIcUiMWJcKa3qjpSnOV0cis"
