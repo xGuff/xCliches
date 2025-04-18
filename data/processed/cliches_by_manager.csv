@@ -1,18 +1,18 @@
 club,manager,cliche_count,word_count,cliches_per_10000_words
 Bournemouth,Andoni Iraola,4.0,53570,0.746686578308755
 Brighton,F. Hürzeler,4.0,96925,0.41269022440030956
-Chelsea,E. Maresca,7.0,123603,0.5663292962144932
+Chelsea,E. Maresca,9.0,123603,0.7281376665614913
 Crystal Palace,O. Glasner,0.0,53882,0.0
-Everton,D. Moyes,4.0,59909,0.6676793136256656
-Everton,S. Dyche,4.0,36733,1.088939101080772
+Everton,D. Moyes,2.0,59909,0.3338396568128328
+Everton,S. Dyche,2.0,36733,0.544469550540386
 Fulham,Marco Silva,3.0,43191,0.694589150517469
-Leicester,R. van Nistelrooy,4.0,57052,0.7011147724882563
+Leicester,R. van Nistelrooy,3.0,57052,0.5258360793661923
 Leicester,S. Cooper,7.0,61556,1.1371759048671128
-Liverpool,A. Slot,3.0,103154,0.29082730674525464
-Manchester City,Guardiola,16.0,165240,0.9682885499878964
-Manchester United,Ruben Amorim,2.0,36414,0.5492393035645631
-Newcastle,E. Howe,12.0,239431,0.5011882337708985
-Southampton,I. Juric,5.0,72858,0.6862664360811441
+Liverpool,A. Slot,2.0,103154,0.19388487116350311
+Manchester City,Guardiola,14.0,165240,0.8472524812394093
+Manchester United,Ruben Amorim,0.0,36414,0.0
+Newcastle,E. Howe,16.0,239431,0.6682509783611981
+Southampton,I. Juric,6.0,72858,0.823519723297373
 Southampton,R. Martin,2.0,80733,0.24773017229633482
 West Ham,G. Potter,1.0,26130,0.3827018752391887
 West Ham,Lopetegui,0.0,39341,0.0

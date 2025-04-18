@@ -9,6 +9,18 @@ import requests
 from io import BytesIO
 import yaml
 
+# Matplotlib settings
+plt.rcParams.update({
+    'text.usetex': True,
+    'text.latex.preamble': r'\usepackage[cm]{sfmath}\usepackage{amsmath}',
+    'font.family': 'sans-serif',
+    'font.sans-serif': 'cm',
+    'font.size': 14,
+    'xtick.direction': 'in',
+    'ytick.direction': 'in'
+})
+plt.style.use('tableau-colorblind10')
+
 # Load data
 df = pd.read_csv("data/processed/cliches_by_week.csv", parse_dates=["publish_date", "week"])
 tenure_df = pd.read_csv("data/raw/managers.csv", parse_dates=["start_date", "end_date"])
@@ -51,15 +63,19 @@ output_dir = "data/outputs/club_timeseries"
 os.makedirs(output_dir, exist_ok=True)
 sns.set_style("whitegrid")
 
-def get_image_from_url(url, zoom=0.05, greyscale=False):
+def get_image_from_url(source, zoom=0.05, greyscale=False):
     try:
-        response = requests.get(url)
-        image = Image.open(BytesIO(response.content)).convert("RGBA")
+        if os.path.isfile(source):  # Check if the source is a file path
+            image = Image.open(source).convert("RGBA")
+        else:  # Assume the source is a URL
+            response = requests.get(source)
+            image = Image.open(BytesIO(response.content)).convert("RGBA")
+        
         if greyscale:
             image = image.convert("LA").convert("RGBA")
         return OffsetImage(image, zoom=zoom)
     except Exception as e:
-        print(f"⚠️ Could not load image: {url} — {e}")
+        print(f"⚠️ Could not load image: {source} — {e}")
         return None
 
 def add_circular_image_with_border(ax, image, xy, border_color="black", radius=0.6):
@@ -68,10 +84,18 @@ def add_circular_image_with_border(ax, image, xy, border_color="black", radius=0
     ab = AnnotationBbox(image, xy, frameon=False, box_alignment=(0.5, 0.5), zorder=11)
     ax.add_artist(ab)
 
-def get_circular_image_with_border(url, zoom=0.4, border_thickness=6, border_color="black"):
+def get_circular_image_with_border(source, zoom=0.4, border_thickness=6, border_color="black"):
     try:
-        response = requests.get(url)
-        image = Image.open(BytesIO(response.content)).convert("RGBA")
+        # Load image from URL or file path
+        if os.path.isfile(source):  # Check if the source is a file path
+            image = Image.open(source).convert("RGBA")
+        else:  # Assume the source is a URL
+            response = requests.get(source)
+            image = Image.open(BytesIO(response.content)).convert("RGBA")
+        
+        # Resize the image to a standard size (e.g., 256x256)
+        standard_size = (128, 128)
+        image = image.resize(standard_size, Image.Resampling.LANCZOS)
 
         # Crop to square
         size = min(image.size)
@@ -102,7 +126,7 @@ def get_circular_image_with_border(url, zoom=0.4, border_thickness=6, border_col
         return OffsetImage(background, zoom=zoom)
 
     except Exception as e:
-        print(f"⚠️ Could not load bordered circular image from {url}: {e}")
+        print(f"⚠️ Could not load bordered circular image from {source}: {e}")
         return None
 
 # Plot each club individually

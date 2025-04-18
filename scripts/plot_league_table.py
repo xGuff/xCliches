@@ -6,10 +6,22 @@ import os
 import requests
 from io import BytesIO
 
+# Matplotlib settings
+plt.rcParams.update({
+    'text.usetex': True,
+    'text.latex.preamble': r'\usepackage[cm]{sfmath}\usepackage{amsmath}',
+    'font.family': 'sans-serif',
+    'font.sans-serif': 'cm',
+    'font.size': 11,
+    'xtick.direction': 'in',
+    'ytick.direction': 'in'
+})
+plt.style.use('tableau-colorblind10')
+
 # Paths
 data_path = "data/processed/cliches_by_club.csv"  # or by_manager if preferred
 badge_path = "data/raw/club_badges.csv"
-output_path = "data/outputs/xguff_league_table_bar_chart.png"
+output_path = "data/outputs/league_table.png"
 
 # Load and sort data
 df = pd.read_csv(data_path)
@@ -23,32 +35,37 @@ if "manager" in df.columns:
 df = df.sort_values("cliches_per_10000_words", ascending=False).reset_index(drop=True)
 df["rank"] = df.index + 1
 
+# Get color map values
+cmap = plt.get_cmap("plasma")
+colors = [cmap(i / len(df)) for i in range(len(df))]
 # Setup figure
-fig, ax = plt.subplots(figsize=(10, 12))
+fig, ax = plt.subplots(figsize=(8, 8))
 bar_width = 0.6
 
 # Plot bars
-bars = ax.barh(df["rank"], df["cliches_per_10000_words"], color="skyblue", edgecolor="black", height=bar_width)
-
+bars = ax.barh(df["rank"], df["cliches_per_10000_words"], height=bar_width, color=colors)
 # Add club badge next to each bar
-for i, (club, rank) in enumerate(zip(df["club"], df["rank"])):
+for i, (club, rank, value) in enumerate(zip(df["club"], df["rank"], df["cliches_per_10000_words"])):
     badge_url = badge_df.loc[badge_df["club"] == club, "badge_url"].values
     if badge_url.size > 0:
         try:
             response = requests.get(badge_url[0])
             img = mpimg.imread(BytesIO(response.content), format='png')
-            imagebox = OffsetImage(img, zoom=0.1)
-            ab = AnnotationBbox(imagebox, (0, rank), frameon=False, box_alignment=(0.5, 0.5))
+            imagebox = OffsetImage(img, zoom=0.15)
+            ab = AnnotationBbox(imagebox, (value, rank), frameon=False, box_alignment=(0, 0.5))
             ax.add_artist(ab)
         except:
             print(f"⚠️ Failed to load badge for {club}")
 
+ax.tick_params(axis='y', length=0)  # Remove y tick marks but keep labels
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
 # Style adjustments
 ax.set_yticks(df["rank"])
-ax.set_yticklabels([])  # Hide text labels since we have badges
+ax.set_yticklabels(df["rank"])  # Show league positions on the y-axis
 ax.invert_yaxis()  # Rank 1 at top
 ax.set_xlabel("Clichés per 10,000 Words", fontsize=12)
-ax.set_title("🎙️ xGuff League Table – Clichés per 10,000 Words", fontsize=14)
+ax.set_ylabel("Cliché Ranking", fontsize=12)  # Add label for y-axis
 plt.grid(axis="x", linestyle="--", alpha=0.6)
 
 plt.tight_layout()

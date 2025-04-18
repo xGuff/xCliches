@@ -1,4 +1,3 @@
-# Re-run after state reset
 import os
 import pandas as pd
 import nltk
@@ -52,7 +51,7 @@ full_df["cliches_per_10000_words"] = (full_df["cliche_count"] / full_df["word_co
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 full_df.to_csv(os.path.join(OUTPUT_DIR, "cliches_by_week.csv"), index=False)
 
-# Cliché usage by club/manager breakdown
+# Cliche usage by club/manager breakdown
 match_df = match_df.merge(full_df[["video_url", "club", "manager"]], on="video_url", how="left")
 if "club" not in match_df.columns:
     match_df["club"] = match_df["club_y"] if "club_y" in match_df.columns else match_df["club_x"]
@@ -63,7 +62,8 @@ breakdown = (
     .reset_index(name="count")
     .sort_values(["club", "manager", "count"], ascending=[True, True, False])
 )
-breakdown.to_csv(os.path.join(OUTPUT_DIR, "cliches_by_club.csv"), index=False)
+breakdown.to_csv(os.path.join(OUTPUT_DIR, "favourite_cliches.csv"), index=False)
+
 
 # Manager-level summary
 manager_grouped = full_df.groupby(["club", "manager"]).agg({
@@ -74,6 +74,16 @@ manager_grouped["cliches_per_10000_words"] = (
     manager_grouped["cliche_count"] / manager_grouped["word_count"] * 10000
 )
 manager_grouped.to_csv(os.path.join(OUTPUT_DIR, "cliches_by_manager.csv"), index=False)
+
+# Club-level summary
+club_grouped = full_df.groupby("club").agg({
+    "cliche_count": "sum",
+    "word_count": "sum"
+}).reset_index()
+club_grouped["cliches_per_10000_words"] = (
+    club_grouped["cliche_count"] / club_grouped["word_count"] * 10000
+)
+club_grouped.to_csv(os.path.join(OUTPUT_DIR, "cliches_by_club.csv"), index=False)
 
 # Confirm outputs
 os.listdir(OUTPUT_DIR)

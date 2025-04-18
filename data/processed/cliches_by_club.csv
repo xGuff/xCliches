@@ -1,53 +1,14 @@
-club,manager,cliche,count
-Bournemouth,Andoni Iraola,have to take our chances,2
-Bournemouth,Andoni Iraola,end product,1
-Bournemouth,Andoni Iraola,one game at a time,1
-Brighton,F. Hürzeler,end product,1
-Brighton,F. Hürzeler,games coming thick and fast,1
-Brighton,F. Hürzeler,got the rub of the green,1
-Brighton,F. Hürzeler,one game at a time,1
-Chelsea,E. Maresca,at the end of the day,3
-Chelsea,E. Maresca,business end of the season,2
-Chelsea,E. Maresca,not that kind of player,1
-Chelsea,E. Maresca,we go again,1
-Everton,D. Moyes,at the end of the day,2
-Everton,D. Moyes,we go again,2
-Everton,S. Dyche,at the end of the day,2
-Everton,S. Dyche,we go again,2
-Fulham,Marco Silva,end product,3
-Leicester,R. van Nistelrooy,business end of the season,1
-Leicester,R. van Nistelrooy,games coming thick and fast,1
-Leicester,R. van Nistelrooy,one game at a time,1
-Leicester,R. van Nistelrooy,we go again,1
-Leicester,S. Cooper,one game at a time,4
-Leicester,S. Cooper,at the end of the day,1
-Leicester,S. Cooper,earned the right to play,1
-Leicester,S. Cooper,parking the bus,1
-Liverpool,A. Slot,no easy games,1
-Liverpool,A. Slot,one game at a time,1
-Liverpool,A. Slot,we go again,1
-Manchester City,Guardiola,at the end of the day,5
-Manchester City,Guardiola,that hunger,2
-Manchester City,Guardiola,we go again,2
-Manchester City,Guardiola,business end of the season,1
-Manchester City,Guardiola,can score too early,1
-Manchester City,Guardiola,corridor of uncertainty,1
-Manchester City,Guardiola,early doors,1
-Manchester City,Guardiola,shooting boots,1
-Manchester City,Guardiola,throw the kitchen sink,1
-Manchester City,Guardiola,worked his socks off,1
-Manchester United,Ruben Amorim,we go again,2
-Newcastle,E. Howe,no easy games,4
-Newcastle,E. Howe,a dangerous lead,2
-Newcastle,E. Howe,big ask,1
-Newcastle,E. Howe,bit of quality,1
-Newcastle,E. Howe,earned the right to play,1
-Newcastle,E. Howe,every game is a cup final,1
-Newcastle,E. Howe,got that in his locker,1
-Newcastle,E. Howe,not that kind of player,1
-Southampton,I. Juric,at the end of the day,2
-Southampton,I. Juric,no easy games,2
-Southampton,I. Juric,one game at a time,1
-Southampton,R. Martin,no easy games,1
-Southampton,R. Martin,still has a lot to learn,1
-West Ham,G. Potter,at the end of the day,1
+club,cliche_count,word_count,cliches_per_10000_words
+Bournemouth,4.0,53570,0.746686578308755
+Brighton,4.0,96925,0.41269022440030956
+Chelsea,9.0,123603,0.7281376665614913
+Crystal Palace,0.0,53882,0.0
+Everton,4.0,96642,0.41389871898346475
+Fulham,3.0,43191,0.694589150517469
+Leicester,10.0,118608,0.843113449345744
+Liverpool,2.0,103154,0.19388487116350311
+Manchester City,14.0,165240,0.8472524812394093
+Manchester United,0.0,36414,0.0
+Newcastle,16.0,239431,0.6682509783611981
+Southampton,8.0,153591,0.5208638526997025
+West Ham,1.0,65471,0.15273938079455024
