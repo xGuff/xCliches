@@ -21,13 +21,27 @@ plt.style.use('tableau-colorblind10')
 # Paths
 data_path = "data/processed/cliches_by_club.csv"  # or by_manager if preferred
 badge_path = "data/raw/club_badges.csv"
+transcript_path = "data/raw/transcripts.csv"
 output_path = "data/outputs/league_table.png"
 
-# Load and sort data
+# Load data
 df = pd.read_csv(data_path)
 badge_df = pd.read_csv(badge_path)
+transcript_df = pd.read_csv(transcript_path)
 
-# Use only the latest manager if using the manager file
+# --- Filter by word count threshold ---
+# Compute total word count per club
+transcript_df["word_count"] = transcript_df["transcript_text"].str.split().str.len()
+word_counts = transcript_df.groupby("club")["word_count"].sum()
+
+# Set threshold
+MIN_WORDS = 50000
+valid_clubs = word_counts[word_counts >= MIN_WORDS].index
+
+# Filter main cliché dataframe
+df = df[df["club"].isin(valid_clubs)]
+
+# Use only the latest manager if manager column is present
 if "manager" in df.columns:
     df = df.sort_values("cliches_per_10000_words", ascending=False).drop_duplicates("club")
 
@@ -38,12 +52,14 @@ df["rank"] = df.index + 1
 # Get color map values
 cmap = plt.get_cmap("plasma")
 colors = [cmap(i / len(df)) for i in range(len(df))]
+
 # Setup figure
 fig, ax = plt.subplots(figsize=(8, 8))
 bar_width = 0.6
 
 # Plot bars
 bars = ax.barh(df["rank"], df["cliches_per_10000_words"], height=bar_width, color=colors)
+
 # Add club badge next to each bar
 for i, (club, rank, value) in enumerate(zip(df["club"], df["rank"], df["cliches_per_10000_words"])):
     badge_url = badge_df.loc[badge_df["club"] == club, "badge_url"].values
@@ -57,17 +73,18 @@ for i, (club, rank, value) in enumerate(zip(df["club"], df["rank"], df["cliches_
         except:
             print(f"⚠️ Failed to load badge for {club}")
 
-ax.tick_params(axis='y', length=0)  # Remove y tick marks but keep labels
+# Style and labels
+ax.tick_params(axis='y', length=0)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
-# Style adjustments
 ax.set_yticks(df["rank"])
-ax.set_yticklabels(df["rank"])  # Show league positions on the y-axis
-ax.invert_yaxis()  # Rank 1 at top
+ax.set_yticklabels(df["rank"])
+ax.invert_yaxis()
 ax.set_xlabel("Clichés per 10,000 Words", fontsize=12)
-ax.set_ylabel("Cliché Ranking", fontsize=12)  # Add label for y-axis
+ax.set_ylabel("Cliché Ranking", fontsize=12)
 plt.grid(axis="x", linestyle="--", alpha=0.6)
 
+# Save
 plt.tight_layout()
 plt.savefig(output_path)
 plt.show()

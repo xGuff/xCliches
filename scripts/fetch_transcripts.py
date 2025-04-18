@@ -8,7 +8,7 @@ from datetime import datetime, date
 
 # Paths
 CONFIG_PATH = "data/playlists.yaml"
-TENURES_PATH = "data/raw/manager_tenures.csv"
+TENURES_PATH = "data/raw/managers.csv"
 OUTPUT_PATH = "data/raw/transcripts.csv"
 
 # Season date range
