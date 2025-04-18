@@ -2,7 +2,7 @@ import pandas as pd
 from datetime import datetime
 
 # Constants
-CSV_PATH = "data/raw/manager_tenures.csv"
+CSV_PATH = "data/raw/managers.csv"
 
 # Blacklist of unwanted managers
 BLACKLIST = {
@@ -11,7 +11,8 @@ BLACKLIST = {
     "G. Jones",
     "R. Mason",
     "S. Ireland",
-    "G. Brazil"
+    "G. Brazil",
+    "J. Klopp"
 }
 
 def remove_blacklisted_managers(csv_path, blacklist):

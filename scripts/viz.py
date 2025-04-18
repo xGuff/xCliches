@@ -7,7 +7,9 @@ import os
 os.makedirs("data/outputs", exist_ok=True)
 
 # Load normalized club scores (includes word counts and per-1000 normalization)
-df = pd.read_csv("data/processed/club_cliche_scores_normalized.csv")
+df = pd.read_csv("data/processed/cliches_by_club.csv")
+
+
 
 # --- Plot 1: Clichés per 1000 words by club ---
 df_sorted = df.sort_values("cliches_per_1000_words", ascending=False)
@@ -75,4 +77,15 @@ plt.ylabel("Club", fontsize=12)
 plt.legend(title="Cliché", bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 plt.savefig("data/outputs/most_used_cliche_by_club.png")
+plt.show()
+
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+cliche_freq = df[cliche_cols].sum().to_dict()
+wc = WordCloud(background_color="white", width=1920, height=1080).generate_from_frequencies(cliche_freq)
+
+plt.figure(figsize=(16, 9))
+plt.imshow(wc, interpolation="bilinear")
+plt.axis("off")
 plt.show()

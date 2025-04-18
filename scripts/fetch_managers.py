@@ -15,7 +15,7 @@ headers = {
 
 # Season boundaries
 SEASON_START = date(2024, 8, 1)
-SEASON_END = date(2025, 6, 30)
+SEASON_END = date(2025, 5, 30)
 TODAY = date.today()
 
 # Premier League team list
@@ -26,6 +26,22 @@ teams_url = f'https://v3.football.api-sports.io/teams?league={league_id}&season=
 teams_res = requests.get(teams_url, headers=headers)
 teams = teams_res.json().get("response", [])
 team_ids = {team["team"]["id"]: team["team"]["name"] for team in teams}
+
+# Extract and save club badge URLs
+club_badges = []
+for team in teams:
+    team_name = team["team"]["name"]
+    logo_url = team["team"]["logo"]
+    club_badges.append({
+        "club": team_name,
+        "badge_url": logo_url
+    })
+
+# Save club badges
+badges_df = pd.DataFrame(club_badges)
+badges_df.to_csv("data/raw/club_badges.csv", index=False)
+print(f"✅ Saved {len(badges_df)} club badges to data/raw/club_badges.csv")
+
 
 # Helper function
 def parse_date(d):
@@ -48,6 +64,7 @@ for team_id, team_name in team_ids.items():
 
     for coach in coach_res.json().get("response", []):
         name = coach.get("name", "Unknown")
+        photo_url = coach.get("photo", "")
 
         for job in coach.get("career", []):
             job_team_id = job.get("team", {}).get("id")
@@ -79,13 +96,15 @@ for team_id, team_name in team_ids.items():
                 "club": team_name,
                 "manager": name,
                 "start_date": effective_start,
-                "end_date": end_date
+                "end_date": end_date,
+                "photo_url": photo_url
             })
+
 
 # Save full-season manager timeline
 df = pd.DataFrame(tenures)
 df.sort_values(["club", "start_date"], inplace=True)
 os.makedirs("data/raw", exist_ok=True)
-df.to_csv("data/raw/manager_tenures.csv", index=False)
+df.to_csv("data/raw/managers.csv", index=False)
 
-print(f"\n✅ Saved {len(df)} manager tenures active during 2024/25 season to data/raw/manager_tenures.csv")
+print(f"\n✅ Saved {len(df)} manager tenures active during 2024/25 season to data/raw/managers.csv")

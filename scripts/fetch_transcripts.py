@@ -9,7 +9,7 @@ from datetime import datetime, date
 # Paths
 CONFIG_PATH = "data/playlists.yaml"
 TENURES_PATH = "data/raw/manager_tenures.csv"
-OUTPUT_PATH = "data/raw/xguff_pressers_raw.csv"
+OUTPUT_PATH = "data/raw/transcripts.csv"
 
 # Season date range
 SEASON_START = date(2024, 8, 1)

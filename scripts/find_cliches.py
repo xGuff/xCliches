@@ -7,7 +7,7 @@ import os
 nltk.download("punkt")
 
 # --- Config ---
-TRANSCRIPT_PATH = "data/raw/xguff_pressers_raw.csv"
+TRANSCRIPT_PATH = "data/raw/transcripts.csv"
 CLICHE_PATH = "data/cliches.yaml"
 OUTPUT_MATCHES = "data/processed/cliche_matches.csv"
 FUZZY_THRESHOLD = 95
@@ -86,43 +86,3 @@ os.makedirs(os.path.dirname(OUTPUT_MATCHES), exist_ok=True)
 pd.DataFrame(all_matches).to_csv(OUTPUT_MATCHES, index=False)
 
 print(f"✅ Done! Saved fuzzy cliché matches to: {OUTPUT_MATCHES}")
-
-import numpy as np
-from collections import defaultdict
-
-# Convert to DataFrame
-match_df = pd.DataFrame(all_matches)
-
-# Count cliché mentions per club
-summary = (
-    match_df.groupby(["club", "cliche"])
-    .size()
-    .reset_index(name="count")
-)
-
-# Pivot to wide format
-summary_pivot = summary.pivot(index="club", columns="cliche", values="count").fillna(0)
-
-# --- Word counts ---
-# Load full transcripts to normalize
-full_df = pd.read_csv("data/raw/xguff_pressers_raw.csv")
-
-word_counts = (
-    full_df.groupby("club")["transcript_text"]
-    .apply(lambda texts: sum(len(nltk.word_tokenize(t)) for t in texts))
-    .rename("total_words")
-)
-
-# --- Add total cliché counts ---
-summary_pivot["total_cliche_score"] = summary_pivot.sum(axis=1)
-summary_pivot["total_words"] = word_counts
-summary_pivot["cliches_per_1000_words"] = summary_pivot["total_cliche_score"] / summary_pivot["total_words"] * 1000
-
-# Reset index for plotting
-summary_pivot = summary_pivot.reset_index()
-
-# Save it
-os.makedirs("data/processed", exist_ok=True)
-summary_pivot.to_csv("data/processed/club_cliche_scores_normalized.csv", index=False)
-
-print("✅ Saved summarized club cliché scores to data/processed/club_cliche_scores_normalized.csv")
