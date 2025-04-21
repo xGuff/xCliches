@@ -15,7 +15,7 @@ plt.rcParams.update({
     'text.latex.preamble': r'\usepackage[cm]{sfmath}\usepackage{amsmath}',
     'font.family': 'sans-serif',
     'font.sans-serif': 'cm',
-    'font.size': 14,
+    'font.size': 16,
     'xtick.direction': 'in',
     'ytick.direction': 'in'
 })
@@ -129,7 +129,7 @@ def get_circular_image_with_border(source, zoom=0.4, border_thickness=6, border_
 
 # Plotting
 for club in all_clubs:
-    fig, ax = plt.subplots(figsize=(14, 8), dpi=500)
+    fig, ax = plt.subplots(figsize=(14, 8), dpi=700)
 
     for other_club in all_clubs:
         group = weekly_avg[weekly_avg["club"] == other_club]
@@ -159,8 +159,9 @@ for club in all_clubs:
             if img:
                 future = weekly_avg[(weekly_avg["club"] == club) & (weekly_avg["week"] >= start_date)]
                 if not future.empty:
-                    week = min(all_weeks, key=lambda d: abs(d - start_date))
-                    y_val = future.iloc[0]["rank"]
+                    club_weeks = weekly_avg[weekly_avg["club"] == club]["week"].unique()
+                    week = min(club_weeks, key=lambda d: abs(d - start_date))
+                    y_val = weekly_avg.loc[(weekly_avg["club"] == club) & (weekly_avg["week"] == week), "rank"].values[0]
                     ab = AnnotationBbox(img, (week, y_val), frameon=False, box_alignment=(0.5, 0.5), zorder=11)
                     ax.add_artist(ab)
 

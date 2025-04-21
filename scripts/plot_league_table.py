@@ -86,5 +86,5 @@ plt.grid(axis="x", linestyle="--", alpha=0.6)
 
 # Save
 plt.tight_layout()
-plt.savefig(output_path)
+plt.savefig(output_path, dpi=700)
 plt.show()

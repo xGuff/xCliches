@@ -66,7 +66,7 @@ mask = pivot == 0
 annotations = pivot.applymap(lambda v: f"{v:.2f}" if v > 0 else "")
 
 # Plot heatmap with mask applied
-plt.figure(figsize=(12, 8))
+plt.figure(figsize=(10, 12))
 ax = sns.heatmap(
     pivot,
     annot=annotations,
@@ -77,20 +77,54 @@ ax = sns.heatmap(
     cbar_kws={"label": "Clichés per 10,000 Words"}
 )
 
-ax.set_xlabel("Club (Top 5 by clichés per 10,000 words)")
-ax.set_ylabel("Cliché Phrase")
-plt.xticks(rotation=45, ha="right")
-plt.tight_layout()
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+from PIL import Image
+import requests
+from io import BytesIO
 
+# Load badge mapping
+badge_df = pd.read_csv("data/raw/club_badges.csv")
+badge_map = badge_df.set_index("club")["badge_url"].to_dict()
 
-ax.set_xlabel("Club (Top 5 by clichés per 10,000 words)")
-ax.set_ylabel("Cliché Phrase")
-plt.xticks(rotation=45, ha="right")
+# Get tick locations
+xtick_locs = ax.get_xticks()
+
+# Clear the default tick labels
+ax.set_xticklabels([])
+
+# Adjust plot padding for space below badges
+plt.subplots_adjust(bottom=0.2)
+
+# Add badge images
+for i, club in enumerate(top_clubs):
+    badge_url = badge_map.get(club)
+    if badge_url:
+        try:
+            if os.path.isfile(badge_url):
+                img = Image.open(badge_url)
+            else:
+                response = requests.get(badge_url)
+                img = Image.open(BytesIO(response.content))
+            img = img.convert("RGBA")
+            imagebox = OffsetImage(img, zoom=0.2)  # Adjust zoom as needed
+            ab = AnnotationBbox(
+                imagebox,
+                (xtick_locs[i], len(pivot)),
+                frameon=False,
+                box_alignment=(0.5, 1)
+            )
+            ax.add_artist(ab)
+        except Exception as e:
+            print(f"⚠️ Error loading badge for {club}: {e}")
+ax.set_xticks([])
+ax.tick_params(axis='y', which='both', length=0)
+ax.set_xlabel('')
+ax.set_ylabel('')
 # plt.title("🎙️ Top 5 Clubs by Normalized Cliché Usage", fontsize=16)
 plt.tight_layout()
 
 # === Save ===
-plt.savefig(output_path)
+plt.savefig(output_path, dpi=700)
 plt.close()
 
 print(f"✅ Normalized cliché heatmap saved to {output_path}")
