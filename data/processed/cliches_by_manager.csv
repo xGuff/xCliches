@@ -1,18 +1,22 @@
 club,manager,cliche_count,word_count,cliches_per_10000_words
-Bournemouth,Andoni Iraola,4.0,53570,0.746686578308755
+Arsenal,Mikel Arteta,8.0,112806,0.7091821357020017
+Bournemouth,Andoni Iraola,4.0,55280,0.723589001447178
 Brighton,F. Hürzeler,4.0,96925,0.41269022440030956
-Chelsea,E. Maresca,9.0,123603,0.7281376665614913
+Chelsea,E. Maresca,9.0,125562,0.7167773689492043
 Crystal Palace,O. Glasner,0.0,53882,0.0
-Everton,D. Moyes,2.0,59909,0.3338396568128328
+Everton,D. Moyes,4.0,59909,0.6676793136256656
 Everton,S. Dyche,2.0,36733,0.544469550540386
-Fulham,Marco Silva,3.0,43191,0.694589150517469
+Fulham,Marco Silva,6.0,44526,1.3475272874275703
 Leicester,R. van Nistelrooy,3.0,57052,0.5258360793661923
-Leicester,S. Cooper,7.0,61556,1.1371759048671128
-Liverpool,A. Slot,2.0,103154,0.19388487116350311
-Manchester City,Guardiola,14.0,165240,0.8472524812394093
-Manchester United,Ruben Amorim,0.0,36414,0.0
-Newcastle,E. Howe,16.0,239431,0.6682509783611981
-Southampton,I. Juric,6.0,72858,0.823519723297373
-Southampton,R. Martin,2.0,80733,0.24773017229633482
-West Ham,G. Potter,1.0,26130,0.3827018752391887
+Leicester,S. Cooper,9.0,61556,1.4620833062577165
+Liverpool,A. Slot,3.0,105784,0.28359676321560917
+Manchester City,Guardiola,6.0,97156,0.6175635061138788
+Manchester United,Ruben Amorim,0.0,39341,0.0
+Newcastle,E. Howe,22.0,244949,0.898146144707674
+Nottingham Forest,Nuno Espírito Santo,10.0,54544,1.8333822235259607
+Southampton,I. Juric,6.0,78316,0.766126972776955
+Southampton,R. Martin,4.0,80733,0.49546034459266963
+West Ham,G. Potter,3.0,26205,1.1448196908986834
 West Ham,Lopetegui,0.0,39341,0.0
+Wolves,G. O'Neil,4.0,50702,0.7889235138653308
+Wolves,Vítor Pereira,1.0,35364,0.28277344191833503

@@ -40,6 +40,10 @@ word_totals = df.groupby("club")["word_count"].sum().reset_index()
 word_totals = word_totals.sort_values("word_count", ascending=False).reset_index(drop=True)
 word_totals["rank"] = word_totals.index + 1
 
+# Calculate total word count across all clubs
+total_word_count = word_totals["word_count"].sum()
+print(f"Total number of words in the entire dataset: {total_word_count}")
+
 # Setup plot
 fig, ax = plt.subplots(figsize=(8, 8))
 bar_width = 0.6

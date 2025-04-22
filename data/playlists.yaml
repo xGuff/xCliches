@@ -1,3 +1,17 @@
+Arsenal:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLMAZPiFVim0dV-ix2rA_5xJZNX3Sb7Ovs"
+
+Nottingham Forest:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLMAZPiFVim0fqibOWsnB3V4TGxvr1fKaD"
+
+Wolves:
+  playlists: 
+    - label: "Press Conferences"
+      url: "https://www.youtube.com/playlist?list=PLMAZPiFVim0fx_PhXzkb_oCepPIcT7RNs"
 
 Everton:
   playlists: 
@@ -27,7 +41,7 @@ West Ham:
 Manchester City:
   playlists: 
     - label: "Press Conferences"
-      url: "https://www.youtube.com/playlist?list=PLp_A7BZlpSOeaPDYrZlrzKQhRyvHhDkqK"
+      url: "https://www.youtube.com/playlist?list=PLMAZPiFVim0cKexi_KwsR5tctBE7DKrEL"
 
 Bournemouth:
   playlists: 

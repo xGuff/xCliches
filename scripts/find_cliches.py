@@ -11,7 +11,7 @@ TRANSCRIPT_PATH = "data/raw/transcripts.csv"
 CLICHE_PATH = "data/cliches.yaml"
 OUTPUT_MATCHES = "data/processed/cliche_matches.csv"
 FUZZY_THRESHOLD = 95
-WINDOW_SIZE = 8  # Use a fixed window size
+WINDOW_SIZE = 12  # Use a fixed window size
 
 # --- Load cliché list ---
 with open(CLICHE_PATH) as f:

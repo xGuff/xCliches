@@ -35,7 +35,7 @@ transcript_df["word_count"] = transcript_df["transcript_text"].str.split().str.l
 word_counts = transcript_df.groupby("club")["word_count"].sum()
 
 # Set threshold
-MIN_WORDS = 50000
+MIN_WORDS = 0
 valid_clubs = word_counts[word_counts >= MIN_WORDS].index
 
 # Filter main cliché dataframe
@@ -48,6 +48,8 @@ if "manager" in df.columns:
 # Rank clubs
 df = df.sort_values("cliches_per_10000_words", ascending=False).reset_index(drop=True)
 df["rank"] = df.index + 1
+
+
 
 # Get color map values
 cmap = plt.get_cmap("plasma")

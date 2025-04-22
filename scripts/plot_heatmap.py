@@ -16,7 +16,7 @@ plt.rcParams.update({
 plt.style.use('tableau-colorblind10')
 
 # === Parameters ===
-WORD_COUNT_THRESHOLD = 50000
+WORD_COUNT_THRESHOLD = 0
 
 # === File Paths ===
 cliche_counts_path = "data/processed/favourite_cliches.csv"

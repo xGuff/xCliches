@@ -18,7 +18,7 @@ plt.rcParams.update({
 plt.style.use('tableau-colorblind10')
 
 # === Parameters ===
-WORD_COUNT_THRESHOLD = 50000
+WORD_COUNT_THRESHOLD = 0
 
 # === Paths ===
 cliche_path = "data/processed/cliches_by_club.csv"
@@ -83,10 +83,10 @@ ax.text(mean_x - range_x * 0.9, mean_y + range_y * 0.9,
         "Low cliché, high performance", fontsize=12, ha='left', va='top', color='gray')
 ax.text(mean_x + range_x * 0.1, mean_y + range_y * 0.9,
         "High cliché, high performance", fontsize=12, ha='left', va='top', color='gray')
-ax.text(mean_x - range_x * 0.9, mean_y - range_y * 0.1,
-        "Low cliché, low performance", fontsize=12, ha='left', va='bottom', color='gray')
-ax.text(mean_x + range_x * 0.1, mean_y - range_y * 0.1,
-        "High cliché, low performance", fontsize=12, ha='left', va='bottom', color='gray')
+ax.text(mean_x - range_x * 0.9, mean_y - range_y * 0.9,
+        "Low cliché, low performance", fontsize=12, ha='left', va='top', color='gray')
+ax.text(mean_x + range_x * 0.1, mean_y - range_y * 0.9,
+        "High cliché, low performance", fontsize=12, ha='left', va='top', color='gray')
 
 
 for spine in ['top', 'right']:

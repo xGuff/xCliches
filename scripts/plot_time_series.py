@@ -22,7 +22,7 @@ plt.rcParams.update({
 plt.style.use('tableau-colorblind10')
 
 # Parameters
-WORD_COUNT_THRESHOLD = 50000  # Minimum total words required for a club to be included
+WORD_COUNT_THRESHOLD = 0  # Minimum total words required for a club to be included
 
 # Load data
 df = pd.read_csv("data/processed/cliches_by_week.csv", parse_dates=["publish_date", "week"])
