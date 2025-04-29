@@ -1,22 +1,22 @@
 club,manager,cliche_count,word_count,cliches_per_10000_words
-Arsenal,Mikel Arteta,8.0,112806,0.7091821357020017
+Arsenal,Mikel Arteta,6.0,112806,0.5318866017765013
 Bournemouth,Andoni Iraola,4.0,55280,0.723589001447178
-Brighton,F. Hürzeler,4.0,96925,0.41269022440030956
+Brighton,F. Hürzeler,6.0,96925,0.6190353366004643
 Chelsea,E. Maresca,9.0,125562,0.7167773689492043
-Crystal Palace,O. Glasner,0.0,53882,0.0
-Everton,D. Moyes,4.0,59909,0.6676793136256656
-Everton,S. Dyche,2.0,36733,0.544469550540386
-Fulham,Marco Silva,6.0,44526,1.3475272874275703
+Crystal Palace,O. Glasner,2.0,53882,0.37118147062098655
+Everton,D. Moyes,3.0,59909,0.5007594852192492
+Everton,S. Dyche,3.0,36733,0.8167043258105791
+Fulham,Marco Silva,3.0,44526,0.6737636437137852
 Leicester,R. van Nistelrooy,3.0,57052,0.5258360793661923
-Leicester,S. Cooper,9.0,61556,1.4620833062577165
+Leicester,S. Cooper,12.0,61556,1.9494444083436222
 Liverpool,A. Slot,3.0,105784,0.28359676321560917
-Manchester City,Guardiola,6.0,97156,0.6175635061138788
+Manchester City,Guardiola,5.0,97156,0.514636255094899
 Manchester United,Ruben Amorim,0.0,39341,0.0
-Newcastle,E. Howe,22.0,244949,0.898146144707674
-Nottingham Forest,Nuno Espírito Santo,10.0,54544,1.8333822235259607
+Newcastle,E. Howe,21.0,244949,0.8573213199482341
+Nottingham Forest,Nuno Espírito Santo,11.0,54544,2.0167204458785566
 Southampton,I. Juric,6.0,78316,0.766126972776955
-Southampton,R. Martin,4.0,80733,0.49546034459266963
-West Ham,G. Potter,3.0,26205,1.1448196908986834
+Southampton,R. Martin,3.0,80733,0.37159525844450225
+West Ham,G. Potter,2.0,26205,0.763213127265789
 West Ham,Lopetegui,0.0,39341,0.0
 Wolves,G. O'Neil,4.0,50702,0.7889235138653308
 Wolves,Vítor Pereira,1.0,35364,0.28277344191833503
